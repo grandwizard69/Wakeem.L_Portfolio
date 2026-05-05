@@ -1,1 +1,209 @@
 # Wakeem.L_Portfolio
+# Wakeem.L_Portfolio
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>wakeem.dev — Portfolio</title>
+
+<style>
+    body {
+        margin: 0;
+        background: #05060b;
+        color: #e5f4ff;
+        font-family: Consolas, "Fira Code", monospace;
+    }
+
+    /* Smooth neon glow */
+    .glow {
+        text-shadow: 0 0 12px rgba(0,255,200,0.6);
+    }
+
+    header {
+        padding: 40px;
+        border-bottom: 1px solid #1b2338;
+        background: radial-gradient(circle at top left, #10182a 0, #05060b 60%, #020308 100%);
+        box-shadow: 0 0 25px rgba(0,255,200,0.18);
+    }
+
+    nav a {
+        color: #e5f4ff;
+        text-decoration: none;
+        padding: 6px 12px;
+        border: 1px solid #28345a;
+        border-radius: 999px;
+        margin-right: 8px;
+        background: linear-gradient(135deg, rgba(0,255,200,0.08), rgba(0,140,255,0.08));
+        font-size: 13px;
+        transition: 0.2s;
+    }
+
+    nav a:hover {
+        background: rgba(0,255,200,0.18);
+        border-color: #6af7d4;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: 30px auto;
+        padding: 20px;
+    }
+
+    .panel {
+        background: linear-gradient(145deg, #050814, #05060b);
+        border: 1px solid #1b2338;
+        border-radius: 14px;
+        padding: 20px;
+        margin-bottom: 25px;
+        box-shadow: 0 0 18px rgba(0,0,0,0.7);
+    }
+
+    .panel h2 {
+        margin-top: 0;
+        color: #ffffff;
+    }
+
+    .tag {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: #7a8cff;
+        margin-bottom: 8px;
+    }
+
+    .card {
+        border-radius: 10px;
+        border: 1px solid #28345a;
+        padding: 12px;
+        margin-bottom: 10px;
+        background: rgba(3,10,25,0.9);
+    }
+
+    .terminal {
+        background: rgba(2,10,25,0.9);
+        border: 1px solid #18233c;
+        padding: 14px;
+        border-radius: 10px;
+        font-size: 14px;
+        margin-top: 20px;
+    }
+
+    .terminal span {
+        color: #6af7d4;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 12px;
+        color: #5f6c9b;
+        border-top: 1px solid #141a2b;
+        margin-top: 40px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1 class="glow">&gt; wakeem<span style="color:#6af7d4;">.dev</span></h1>
+    <div style="color:#9fb3ff; font-size:13px;">
+        status: <span style="color:#6af7d4;">online</span> • mode: <span style="color:#ffdd7a;">learning & building</span>
+    </div>
+
+    <nav style="margin-top:20px;">
+        <a href="#about">about</a>
+        <a href="#achievements">achievements</a>
+        <a href="#projects">projects</a>
+        <a href="#contact">contact</a>
+    </nav>
+
+    <div class="terminal">
+        <div class="tag">terminal</div>
+        <span>$</span> whoami<br>
+        → aspiring developer | curious mind | always debugging and improving.<br><br>
+        <span>$</span> mission<br>
+        → build things that are useful, creative, and a little unexpected.
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- ABOUT -->
+    <section id="about" class="panel">
+        <div class="tag">about_me.json</div>
+        <h2>About Me</h2>
+        <p>I’m <span style="color:#6af7d4;">wakeem</span>, someone who enjoys solving problems, experimenting with code, and learning how things work under the hood.</p>
+        <p>This portfolio is a log of my progress: academic achievements, personal milestones, and projects that show how I think and what I’m building.</p>
+        <p>Current focus: <span style="color:#ffdd7a;">improving my coding skills</span>, understanding how systems fit together, and creating things that feel both functional and expressive.</p>
+    </section>
+
+    <!-- PERSONAL ACHIEVEMENTS -->
+    <section class="panel">
+        <div class="tag">personal_achievements.log</div>
+        <h2>Personal Achievements</h2>
+
+        <div class="card">
+            <strong>Built custom web components</strong>
+            <div>Experimented with HTML/CSS to create 3D headers, dividers, and unique layouts.</div>
+        </div>
+
+        <div class="card">
+            <strong>Improved problem‑solving skills</strong>
+            <div>Treating challenges like debugging sessions: observe, test, iterate, learn.</div>
+        </div>
+
+        <div class="card">
+            <strong>Balanced academics & personal growth</strong>
+            <div>Finding time for learning, creativity, and self‑development.</div>
+        </div>
+    </section>
+
+    <!-- ACADEMIC ACHIEVEMENTS -->
+    <section id="achievements" class="panel">
+        <div class="tag">academic_achievements.log</div>
+        <h2>Academic Achievements</h2>
+
+        <div class="card">
+            <strong>[Course Name] — [Achievement]</strong>
+            <div>Short description of what you did or accomplished.</div>
+        </div>
+
+        <div class="card">
+            <strong>[Course Name] — [Project / Grade]</strong>
+            <div>Describe a project or assignment you’re proud of.</div>
+        </div>
+
+        <div class="card">
+            <strong>[Club / Activity] — [Role]</strong>
+            <div>Mention leadership, teamwork, or recognition.</div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="panel">
+        <div class="tag">projects.list</div>
+        <h2>Projects</h2>
+
+        <div class="card">
+            <strong>Custom HTML/CSS elements</strong>
+            <div>Created 3D headers, decorative dividers, and unique layouts using pure CSS.</div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="panel">
+        <div class="tag">contact.cfg</div>
+        <h2>Contact</h2>
+        <p>If you’d like to connect or collaborate, you can reach me here:</p>
+        <p>Email: <span style="color:#6af7d4;">youremail@example.com</span></p>
+    </section>
+
+</div>
+
+<footer>
+    © 2026 wakeem • system status: <span style="color:#6af7d4;">running</span>
+</footer>
+
+</body>
+</html>
