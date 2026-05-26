@@ -316,12 +316,22 @@ footer {
 <header>
     <h1 class="glow typing">&gt; wakeem<span style="color:#6af7d4;">.dev</span></h1>
 
+    <!--  SEARCH BAR IN HEADER  -->
+    <div style="margin-top:20px;">
+        <input id="searchBox" 
+               type="text" 
+               placeholder="Search..." 
+               style="width: 260px; padding: 8px 12px; border-radius: 8px; border: 1px solid #28345a; background:#0b0f1c; color:#e5f4ff; font-family:inherit;">
+    </div>
+
+
+
     <div style="color:#9fb3ff; font-size:13px;">
         status: <span style="color:#6af7d4;">online</span> • mode: <span style="color:#ffdd7a;">learning & building</span>
     </div>
 
     <nav style="margin-top:20px;">
-        <a href="#about">about</a>
+        <a href="https://youtu.be/3aTjHUgu4ZA">about</a>
         <a href="#achievements">achievements</a>
         <a href="#projects">projects</a>
         <a href="#contact">contact</a>
@@ -355,13 +365,13 @@ footer {
     
     <div class="collapsible-about-body achievement">
 
-        <details>
+        <details data-keywords="about me, about">
             <summary>
                 Read more about me.
                 <span class="ach-icon">&gt;</span>
             </summary>
 
-            <div class="about-body">
+            <div class="about-body" >
                 Ever since I was young, I was always a curious child and loved experimenting with new things. I took apart things to see how they worked. I fixed things. I played with things I probably shouldn't have. <br><br>
 
                 My fascination with technology stemmed from this curiosity. I used to always find stuff to take apart and play with. The first thing I remember being able to understand and put back together was this RC car. It was ~$10 and was around the size of a Hot Wheels car. I was bored and decided to take it apart. After doing so, was somehow able to understand what goes where and how it works. Though, I obviously only knew to an extent what the parts were. I was going based off of theories and not research.<br><br>
@@ -384,11 +394,14 @@ footer {
 
 
 
+<!-- -----------------------------------------------------------------------      FOR REFERENCE     ----------------------------------------------------------------------------- -->
 
 
+<!--
 
-<!-- ACADEMIC ACHIEVEMENTS -->
-<details class="section-details" id="achievements">
+THIS IS TO MAKE THE WHOLE OUTER SECTIONS (LIKE THE PROJECTS OR ACHIEVEMENTS) OTHER COLLAPSIBLES GO UNDER THE SUMMARY 
+
+<details class="section-details" id="achievements">       
     <summary>
         <div class="summary-left">
             <div class="summary-tag">academic_achievements.log</div>
@@ -397,18 +410,202 @@ footer {
         <div class="summary-icon">&gt;</div>
     </summary>
 
-    <div class="collapsible-body achievement">
 
+
+</details>
+
+-->
+
+<!---------------------------------------------------------------------->
+
+<!--
+    THIS IS TO MAKE ONE INNER COLLAPSIBLE FOR A SUBJECT LIKE CHS PROGRAMMING        STUFF GOES UNDER THE SUMMARY
+
+    <div class="collapsible-body achievement"> 
         <details>
             <summary>
-                CHS Programming — [Pitt Projects]
+                NAME 
                 <span class="ach-icon">&gt;</span>
             </summary>
 
+
+        </details>
+    </div>
+
+-->
+
+
+<!---------------------------------------------------------------------->
+
+<!--
+THIS IS TO MAKE THE COLLAPSIBLE FOR THE SUBJECT   INFORMATION GOES IN THE achievement-body DIV
+
             <div class="achievement-body">
-                    In my CHS Programming class, we had to do three projects. The Monty Hall Problem, where at the end we had to make a program that simulates the Monty Hall problem and shows the results, The second project where we had to make a count of the words of 3 sherlock holmes books and take away the most common words and compare the end results, and lastly, the third Pitt project where we used Object Orienting to make a flashcard quiz user interface with multiple choice, true or false, and short answer questions.
+
+                <details>
+                    <summary>
+                        NAME
+                        <span class="ach-icon">&gt;</span>
+                    </summary>
+
+                    <div class="achievement-body">
+                        BODY OR WHATEVER    
+                    </div>
+
+                </details>
+            </div>
+
+-->
+
+<!---------------------------------------------------------------------->
+
+<!--  This is what it would look like all together  ADD ARROWS BACK TO COMMENTS TO MAKE THEM COMMENTS AGAIN
+
+<!-- OUTER PART TO MAKE THE WHOLE SECTION COLLAPSIBLE --
+
+<details class="section-details" id="achievements">       
+    <summary>
+        <div class="summary-left">
+            <div class="summary-tag">academic_achievements.log</div>
+            <div class="summary-title">Academic Achievements</div>
+        </div>
+        <div class="summary-icon">&gt;</div>
+    </summary>
+
+
+    <!-- INNER PART FOR SUBJECT --
+
+    <div class="collapsible-body achievement"> 
+        <details>
+            <summary>
+                NAME 
+                <span class="ach-icon">&gt;</span>
+            </summary>
+
+
+            <!--INNER PART FOR INFORMATION BODY COLLAPSIBLE--
+
+            <div class="achievement-body">
+
+                <details>
+                    <summary>
+                        NAME
+                        <span class="ach-icon">&gt;</span>
+                    </summary>
+
+                    <div class="achievement-body">
+                        BODY OR WHATEVER    
+                    </div>
+
+                </details>
+            </div>
+
+        </details>
+    </div>
+
+
+
+</details>
+
+-->
+
+
+
+
+
+<!-- ACADEMIC ACHIEVEMENTS -->
+<details class="section-details" id="achievements" data-keywords="academic achievements, academic">
+    <summary>
+        <div class="summary-left">
+            <div class="summary-tag">academic_achievements.log</div>
+            <div class="summary-title">Academic Achievements</div>
+        </div>
+        <div class="summary-icon">&gt;</div>
+    </summary>
+
+    
+
+    <div class="collapsible-body achievement">
+
+        <details data-keywords="technology achievements, technology related achievements, programming achievements, coding achievements, technology">
+            <summary>
+                Technology related achievements
+                <span class="ach-icon">&gt;</span>
+            </summary>
+
+
+
+
+
+            <div class="achievement-body">
+                <details data-keywords="chs programming, chs, programming">
+                    <summary>
+                        CHS Programming
+                        <span class="ach-icon">&gt;</span>
+                    </summary>
+
+                    <div class="achievement-body">
+
+
+                        <!-- INNER COLLAPSIBLE FOR CHS PROGRAMMING-->
+
+
+
+                            <!-- PITTS PROJECTS -->
+
+                            <details data-keywords="pitt project 1, pitt project one, pitt one, monty hall, monty hall problem, monty">
+                                <summary>
+                                    Monty Hall Simulation (Pitt Project 1)
+                                    <span class="ach-icon">&gt;</span>
+                                </summary>
+
+                                <div class="achievement-body">
+                                    For this project, we had to make a program that would simulate the Monty Hall problem (see below for description). It would start with asking how many rounds the user wanted to simulate—between 10 and 10000. Then, it would ask the user if they wanted to switch or stay. Lastly, it would run the simulation and print out how many rounds the player won.
+                                    <br>
+                                    The Monty Hall problem is a probability puzzle based on a game show scenario. You are presented with three doors: behind one door is a car (the prize you want), and behind the other two doors are goats. You choose one door, but before it’s opened, the host (who knows what’s behind each door) opens another door, revealing a goat. You are then given the option to stick with your original choice or switch to the remaining unopened door. The counterintuitive solution is that switching doors actually gives you a 2/3 chance of winning the car, while sticking with your original choice only gives you a 1/3 chance.
+                                    <br>
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/3aTjHUgu4ZA?si=RYu47L5D-qTSv8OL&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                    <br>
+                                    <a href="https://youtu.be/3aTjHUgu4ZA" target="_blank">(Video Link)</a>
+
+                                </div>
+                            </details>
+
+
+                            <details data-keywords="pitt project 2, pitt project two, pitt two, word frequency analysis, word frequency, word analysis, sherlock holmes books">
+                                <summary>
+                                    Word Frequency Analysis (Pitt Project 2)
+                                    <span class="ach-icon">&gt;</span>
+                                </summary>
+
+                                <div class="achievement-body">
+                                    Analyzed word frequencies in three Sherlock Holmes books, removing common words to reveal unique patterns and insights.
+                                </div>
+                            </details>
+
+                            <details   data-keywords="pitt project 3, pitt three, pitt project three, flashcard quiz, flashcard">
+                                <summary>
+                                    Flashcard Quiz Interface (Pitt Project 3)
+                                    <span class="ach-icon">&gt;</span>
+                                </summary>
+
+                                <div class="achievement-body">
+                                    Developed a flashcard quiz application using Object-Oriented Programming, featuring multiple choice, true/false, and short answer questions.
+                                </div>
+                            </details>
+
+
+
+
+
+                    </div>
+                </details>
+
+
             </div>
         </details>
+
+
 
         <details>
             <summary>
@@ -592,6 +789,62 @@ document.querySelectorAll("details").forEach(d => {
     });
 });
 </script>
+
+
+<!--  KEYWORD SEARCH SYSTEM  -->
+<script>
+const searchBox = document.getElementById("searchBox");
+
+searchBox.addEventListener("keydown", function(e) {
+    if (e.key !== "Enter") return;
+
+    const query = searchBox.value.trim().toLowerCase();
+    if (!query) return;
+
+    const allDetails = document.querySelectorAll("details");
+    let found = false;
+
+    allDetails.forEach(d => {
+        const keywords = d.dataset.keywords;
+        if (!keywords) return;
+
+        const list = keywords.toLowerCase().split(",").map(k => k.trim());
+
+        if (list.includes(query)) {
+            found = true;
+
+            // Open this details
+            d.open = true;
+
+            // Open all parent <details> (like Academic/Projects sections)
+            let parent = d.parentElement;
+            while (parent) {
+                if (parent.tagName && parent.tagName.toLowerCase() === "details") {
+                    parent.open = true;
+                }
+                parent = parent.parentElement;
+            }
+
+            // Scroll to the matched collapsible
+            d.scrollIntoView({ behavior: "smooth", block: "center" });
+
+            // Trigger animation replay on its body
+            const body = d.querySelector(".achievement-body, .collapsible-body");
+            if (body) {
+                body.classList.remove("animate-open");
+                void body.offsetWidth;
+                body.classList.add("animate-open");
+            }
+        }
+    });
+
+    if (!found) {
+        alert("No matching section found.");
+    }
+});
+</script>
+
+
 
 
 </body>
