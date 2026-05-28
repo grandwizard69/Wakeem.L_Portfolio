@@ -27,7 +27,7 @@ body {
 
 
 /* ===========================
-   HEADER + NAVIGATION
+   HEADER + NAVIGATION/SEARCHVAR
    =========================== */
 
 sticky_header {
@@ -47,6 +47,45 @@ sticky_header {
     box-shadow: 0 0 10px rgba(0,255,200,0.18);
     border: 1px solid rgba(0,255,200,0.18);
 }
+
+/* Container must be relative so the dropdown can anchor directly below it */
+.search-container {
+  position: relative;
+  width: 300px;
+}
+
+/* Absolute layout forces the dropdown to float over other page elements */
+#suggestionBox {
+  position: absolute;
+  top: 100%; /* Positions the box directly beneath the input field */
+  left: 0;
+  width: 100%; /* Matches the exact width of the search container */
+  background: #090c19; /* Prevents underlying page content from bleeding through */
+  border: 1px solid #05060b;
+  list-style: none; /* Removes default bullet points from the list */
+  padding: 0;
+  margin: 0;
+  z-index: 10; /* Ensures the dropdown stays on top of surrounding elements */
+  color: #e5f4ff;
+}
+
+/* Individual suggestion items styling */
+#suggestionBox li {
+  padding: 10px;
+  cursor: pointer; /* Changes mouse cursor to a hand icon to show clickability */
+}
+
+/* Visual feedback when users move their mouse over an option */
+#suggestionBox li:hover {
+  box-shadow: 0 0 10px rgba(0,255,200,0.18);
+    border: 1px solid rgba(0,255,200,0.18);
+}
+
+/* Utility class used to toggle visibility via JavaScript */
+.hidden {
+  display: none;
+}
+
 
 /* Toggle checkbox styling */
 #closeOthersToggle {
@@ -487,6 +526,12 @@ details[open] > summary .ach-icon {
 
 <sticky_header>
 
+    
+
+    <!-- Wrapper container to align the input field and its absolute-positioned dropdown -->
+    <div class="search-container">
+    
+    <!-- Main text input field where the user types their search query -->
     <div style="margin-top:0;">
         <input id="searchBox" 
                class="search-box header-search" 
@@ -494,6 +539,13 @@ details[open] > summary .ach-icon {
                placeholder="Search..." 
                style="width: 260px; padding: 8px 12px; border-radius: 8px; border: 1px solid #28345a; background:#05060b; color:#e5f4ff; font-family:inherit;">
     </div>
+    
+    <!-- Unordered list that acts as the container for dynamic suggestion items -->
+    <!-- Starts with the "hidden" class so it remains invisible until typing begins -->
+    <ul id="suggestionBox" class="hidden"></ul>
+    
+    </div>
+
 
     <!-- SETTINGS BUTTON -->
     <div id="settingsContainer">
@@ -972,7 +1024,7 @@ THIS IS TO MAKE THE COLLAPSIBLE FOR THE SUBJECT   INFORMATION GOES IN THE achiev
 
             <div class="achievement-body">
 
-                <details>
+                <details data-keywords="chs web design, chs web, web design, web development, chs, final project, web design final project">
                     <summary>
                         CHS web design final project
                         <span class="ach-icon">&gt;</span>
@@ -984,25 +1036,36 @@ THIS IS TO MAKE THE COLLAPSIBLE FOR THE SUBJECT   INFORMATION GOES IN THE achiev
 
 
                     <h3>Language/tools used:</h3>
-
+                    HTML, CSS, JavaScript, Python, Pyscript, GitHub Pages
                     <br><br> 
 
                     <h3>Visual demo:</h3>
+                    I wanted to skip the visual demo for this one since it is a website that you can interact with yourself. Using a video just didn't seem right for this project. So instead, here is the link to the website. 
 
-                    <a href="link_goes_here" target="_blank" style="color: #6af7d4;">(Video Link)</a>
+                    <a href="https://grandwizard69.github.io/final_project_webdesign/" target="_blank" style="color: #6af7d4;">Website link</a>
                     <br><br>
 
 
                     <h3>What I learned:</h3>
                     <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>Expanding upon my knowledge of using python in website development using Pyscript</li>
+                        <li>More about uploading and hosting on GitHub Pages</li>
+                        <li>Expanding more upon my knowledge of web development</li>
                     </ul>
                     <br><br>
 
                     <h3>Reflection</h3>   
-                    
+                    This project was a good one as it gave me the opportunity to learn more about and use Python in web development. My original plan was to make a Legend of Zelda-themed website but had to scrap it due to certain constraints with the project. I then decided to take a swing at a TUI (Terminal-Based User Interface), which is what I have now.
+                    <br><br>
+                    The original prompt for this project was to use Dreamweaver and Photoshop to make a website showcasing our past projects. And while I did start on the TUI in Dreamweaver, I ended up coding it in Python, skipping both Dreamweaver and Photoshop entirely. Thankfully, I was able to get permission to continue coding it in Python rather then remaking it in Dreamweaver and Photoshop.
+                    <br><br>
+                    I think it turned out pretty good. However, due to the washhigh.org website possibly going down, I had to switch to hosting it on GitHub Pages. Which, while not causing issues for the website itself, messed up some of the projects it linked to. The computer store, for example, lost some functionality. I assume it is because of GitHub Pages not supporting certain things, but I can't find proof of that or any other cause. Though I didn't really care too much about the cause, as it gave me a new challenge to do.
+                    <br><br>
+                    Either way, I fixed everything, and now it runs smoothly and correctly. Like most of my projects, I enjoyed coding this as it gives me a nice challenge and an opportunity to try something new.
+                    <br><br>
+                    You can still check out my project on <a href="https://washhigh.org" target="_blank" style="color: #6af7d4;">washhigh.org</a> where mine and the other web design students from 2004-2026 are hosted. Though, sadly, it may go down after November 2026, as Washington High School may no longer be doing the CHS Web Design course. And since the website was so that new students could see past projects, the school may choose to no longer pay to host the website.
+
+
 
                 </details>
             </div>
@@ -1044,7 +1107,7 @@ THIS IS TO MAKE THE COLLAPSIBLE FOR THE SUBJECT   INFORMATION GOES IN THE achiev
 
 
 <!-- PERSONAL ACHIEVEMENTS -->
-<details class="section-details">
+<details class="section-details" data-keywords="personal achievements, personal">
     <summary>
         <div class="summary-left">
             <div class="summary-tag">personal_achievements.log</div>
@@ -1284,6 +1347,68 @@ function search() {
         alert("No matching section found.");
     }
 }
+
+// ==========================================================================================================================
+
+
+    // Hardcoded data array representing potential search matches,  CAN CHANGE LATER TO GO TO DATA KEYTYPE
+const suggestions = ['about me', 'academic achievements', 'personal achievements', 'projects', 'contact', 'chs programming', 'ap csp performance task', 'chs web design', 'coding related achievements', 'pitt project 1', 'pitt project 2', 'pitt project 3', 'ap csp project 1', 'ap csp project 2'];
+
+// DOM Element References
+const searchInput = document.getElementById('searchBox');
+const suggestionBox = document.getElementById('suggestionBox');
+
+// Fires every single time the user presses a key, deletes a letter, or pastes text
+searchInput.addEventListener('input', () => {
+  // Convert text to lowercase to ensure matching is case-insensitive
+  const query = searchInput.value.toLowerCase();
+  
+  // Wipe out previous suggestions to start with a clean slate
+  suggestionBox.innerHTML = '';
+  
+  // If the input bar is completely empty, hide the dropdown box and exit early
+  if (!query) {
+    suggestionBox.classList.add('hidden');
+    return;
+  }
+
+  // Filter the array to find entries containing the user's typed characters
+  const filtered = suggestions.filter(item => item.toLowerCase().includes(query));
+
+  // If matching items exist, build the suggestion list items dynamically
+  if (filtered.length > 0) {
+    filtered.forEach(item => {
+      // Create a brand new list item <li> element in memory
+      const li = document.createElement('li');
+      li.textContent = item; // Insert the plain text suggestion name
+      
+      // Handle event when a user clicks on a specific suggestion option
+      li.addEventListener('click', () => {
+        searchInput.value = item; // Fill the input field with the clicked item
+        suggestionBox.classList.add('hidden'); // Hide the dropdown menu
+        search(); // Trigger the search function to navigate to the corresponding section
+      });
+      
+      // Inject the newly constructed <li> into our tracking <ul> dropdown container
+      suggestionBox.appendChild(li);
+    });
+    
+    // Reveal the dropdown block since valid suggestions were generated
+    suggestionBox.classList.remove('hidden');
+  } else {
+    // Hide the menu if characters were typed but no array items matched
+    suggestionBox.classList.add('hidden');
+  }
+});
+
+// Event listener attached to the global document object
+// Automatically closes the dropdown menu if a user clicks anywhere outside the search area
+document.addEventListener('click', (e) => {
+  // Check if the clicked target element lives inside the .search-container wrapper
+  if (!e.target.closest('.search-container')) {
+    suggestionBox.classList.add('hidden');
+  }
+});
 </script>
 
 
@@ -1328,6 +1453,11 @@ document.getElementById("closeAllBtn").addEventListener("click", () => {
 });
 </script>
 
+
+<script>
+
+
+</script>
 
 
 </body>
