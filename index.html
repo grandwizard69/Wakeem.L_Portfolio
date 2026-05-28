@@ -30,6 +30,43 @@ body {
    HEADER + NAVIGATION
    =========================== */
 
+sticky_header {
+    color:#05060b; 
+    display:flex; 
+    align-items:center; 
+    justify-content:space-between; 
+    background:#090c19; 
+    padding:15px;
+    position:sticky;
+    top: 10px; /* makes it stick to the top of the viewport */
+    z-index:100; /* ensures it stays above other content when scrolling */
+    border-radius: 20px;
+    margin-bottom: 20px;
+    width: 110%;
+    margin-left: -5%;
+    box-shadow: 0 0 10px rgba(0,255,200,0.18);
+    border: 1px solid rgba(0,255,200,0.18);
+}
+
+/* Toggle checkbox styling */
+#closeOthersToggle {
+    width: 18px;
+    height: 18px;
+    accent-color: #6af7d4; /* neon aqua */
+    cursor: pointer;
+    transform: scale(1.2);
+}
+#closeOthersLabel {
+    color: #9fb3ff;
+    font-size: 14px;
+    margin-left: 6px;
+    cursor: pointer;
+}
+
+
+
+
+
 header {
     padding: 40px;
     border-bottom: 1px solid #1b2338;
@@ -242,6 +279,93 @@ footer {
 
 
 
+/* ===========================
+    SETTINGS BUTTON + PANEL 
+   =========================== */
+
+
+#settingsContainer {
+    position: relative;
+    display: inline-block;
+    margin-left: 15px;
+}
+
+#settingsBtn {
+    background: #0b0f1c;
+    border: 1px solid #28345a;
+    color: #6af7d4;
+    font-size: 18px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#settingsBtn:hover {
+    background: rgba(0,255,200,0.15);
+    border-color: #6af7d4;
+}
+
+/* Hidden panel */
+#settingsPanel {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background: #050814;
+    border: 1px solid #28345a;
+    border-radius: 10px;
+    padding: 12px;
+    width: 200px;
+    box-shadow: 0 0 18px rgba(0,255,200,0.15);
+    display: none;
+    animation: fadeIn 0.25s ease-out;
+}
+
+.settingItem {
+    color: #9fb3ff;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+/* Checkbox style */
+#settingsPanel input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #6af7d4;
+    cursor: pointer;
+}
+
+
+.settingsBtnAction {
+    width: 100%;
+    padding: 8px;
+    margin-top: 6px;
+    background: #0b0f1c;
+    border: 1px solid #28345a;
+    color: #6af7d4;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-family: inherit;
+}
+
+.settingsBtnAction:hover {
+    background: rgba(0,255,200,0.15);
+    border-color: #6af7d4;
+}
+
+
+
+/* Fade animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
 
 
 
@@ -337,29 +461,15 @@ details[open] > summary .ach-icon {
 
 <body>
 
-<header>
+<header id="header">
     <h1 class="glow typing">&gt; wakeem<span style="color:#6af7d4;">.dev</span></h1>
-
-    <!--  SEARCH BAR IN HEADER  -->
-    <div style="margin-top:20px;">
-        <input id="searchBox" 
-               type="text" 
-               placeholder="Search..." 
-               style="width: 260px; padding: 8px 12px; border-radius: 8px; border: 1px solid #28345a; background:#0b0f1c; color:#e5f4ff; font-family:inherit;">
-    </div>
 
 
 
     <div style="color:#9fb3ff; font-size:13px;">
         status: <span style="color:#6af7d4;">online</span> • mode: <span style="color:#ffdd7a;">learning & building</span>
     </div>
-
-    <nav style="margin-top:20px;">
-        <a href="https://youtu.be/3aTjHUgu4ZA">about</a>
-        <a href="#achievements">achievements</a>
-        <a href="#projects">projects</a>
-        <a href="#contact">contact</a>
-    </nav>
+ 
 
     <div class="terminal">
         <div class="tag">terminal</div>
@@ -367,11 +477,51 @@ details[open] > summary .ach-icon {
         → aspiring developer | curious mind | always debugging and improving.<br><br>
         <span>$</span> mission<br>
         → I want to understand how things work, build cool stuff, and share what I learn along the way.<br><br>
+        <span>$</span> hidden_code<br>
+        → The code for my projects will be hidden. You may contact me if you wish to see it.<br><br>
     </div>
 </header>
 
 <div class="container">
 
+
+<sticky_header>
+
+    <div style="margin-top:0;">
+        <input id="searchBox" 
+               class="search-box header-search" 
+               type="text" 
+               placeholder="Search..." 
+               style="width: 260px; padding: 8px 12px; border-radius: 8px; border: 1px solid #28345a; background:#05060b; color:#e5f4ff; font-family:inherit;">
+    </div>
+
+    <!-- SETTINGS BUTTON -->
+    <div id="settingsContainer">
+        <button id="settingsBtn">⚙️</button>
+
+        <div id="settingsPanel">
+
+            <label class="settingItem">
+                <input type="checkbox" id="closeOthersToggle" checked>
+                Close other sections after searching (autoclose)
+            </label>
+
+            <button class="settingsBtnAction" id="openAllBtn">Open all</button>
+            <button class="settingsBtnAction" id="closeAllBtn">Close all</button>
+
+        </div>
+
+    </div>
+
+
+
+    <nav>
+        <a href="https://youtu.be/3aTjHUgu4ZA">about</a>
+        <a href="#achievements">achievements</a>
+        <a href="#projects">projects</a>
+        <a href="#contact">contact</a>
+    </nav>
+</sticky_header>
 
 
 
@@ -534,6 +684,35 @@ THIS IS TO MAKE THE COLLAPSIBLE FOR THE SUBJECT   INFORMATION GOES IN THE achiev
 -->
 
 
+<!--  
+                    <h3>What:</h3>
+
+                    <br><br>
+
+
+                    <h3>Language/tools used:</h3>
+
+                    <br><br>
+
+                    <h3>Visual demo:</h3>
+
+                    <a href="link_goes_here" target="_blank" style="color: #6af7d4;">(Video Link)</a>
+                    <br><br>
+
+
+                    <h3>What I learned:</h3>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <br><br>
+
+                    <h3>Reflection</h3>  
+                    
+-->
+
+
 
 
 
@@ -596,7 +775,7 @@ THIS IS TO MAKE THE COLLAPSIBLE FOR THE SUBJECT   INFORMATION GOES IN THE achiev
 
                                     <h3>Visual demo:</h3>
                                     <iframe width="560" height="315" src="https://www.youtube.com/embed/3aTjHUgu4ZA?si=RYu47L5D-qTSv8OL&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                    <a href="https://youtu.be/3aTjHUgu4ZA" target="_blank">(Video Link)</a>
+                                    <a href="https://youtu.be/3aTjHUgu4ZA" target="_blank" style="color: #6af7d4;">(Video Link)</a>
                                     <br><br>
                                     
                                     <h3>What I learned:</h3>
@@ -634,7 +813,7 @@ THIS IS TO MAKE THE COLLAPSIBLE FOR THE SUBJECT   INFORMATION GOES IN THE achiev
 
                                     <h3>Visual demo:</h3>
                                     <iframe width="560" height="315" src="https://www.youtube.com/embed/ty4HeFtnVdo?si=R7D2vjN7zjDDHeyJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                    <a href="https://youtu.be/ty4HeFtnVdo?si=zI27Ux-BblsDYOxl" target="_blank">(Video Link)</a>
+                                    <a href="https://youtu.be/ty4HeFtnVdo?si=zI27Ux-BblsDYOxl" target="_blank" style="color: #6af7d4;">(Video Link)</a>
                                     <br><br>
                                     
                                     <h3>What I learned:</h3>
@@ -671,7 +850,7 @@ THIS IS TO MAKE THE COLLAPSIBLE FOR THE SUBJECT   INFORMATION GOES IN THE achiev
 
                                     <h3>Visual demo:</h3>
                                     <iframe width="560" height="315" src="https://www.youtube.com/embed/JFDN8KANy58?si=cvubbbvqWJTg0Yqv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                    <a href="https://youtu.be/JFDN8KANy58" target="_blank">(Video Link)</a>
+                                    <a href="https://youtu.be/JFDN8KANy58" target="_blank" style="color: #6af7d4;">(Video Link)</a>
                                     <br><br>
 
 
@@ -712,38 +891,77 @@ THIS IS TO MAKE THE COLLAPSIBLE FOR THE SUBJECT   INFORMATION GOES IN THE achiev
 
                     <div class="achievement-body">
 
-                        <details>
+                        <details data-keywords="ap csp project 1, ap csp project one, ap project 1, ap project one, caesar cipher, ap 1, ap one">
                             <summary>
-                                pt project one
+                                pt project 1
                                 <span class="ach-icon">&gt;</span>
                             </summary>
 
                             <div class="achievement-body">
                                 <h3>What:</h3>
-
+                                For the AP CSP performance task, I made two projects. The first one being a ceaser cipher encoder and decoder. It has a friendly TUI (text user interface) that allows the user to easily encode and decode messages using the Caesar cipher. 
                                 <br><br>
 
 
                                 <h3>Language/tools used:</h3>
-
+                                Python, time and random libaries, coded in thonny
                                 <br><br>
 
                                 <h3>Visual demo:</h3>
-
-                                <a href="link_goes_here" target="_blank">(Video Link)</a>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/ayC_nPcweC8?si=-mLsVEoliX0yPkT7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                <a href="https://youtu.be/ayC_nPcweC8" target="_blank" style="color: #6af7d4;">(Video Link)</a>
                                 <br><br>
 
 
                                 <h3>What I learned:</h3>
                                 <ul>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
+                                    <li>How the ceaser cipher works</li>
+                                    <li>How to make a friendly TUI</li>
                                 </ul>
                                 <br><br>
 
                                 <h3>Reflection</h3>
+                                I liked this project a lot. It was the first project where I could do anything, not just a specific prompt. I did have some trouble coming up with an idea, however, which is why there are two AP projects instead of one. 
+                                <br><br>
+                                I had more plans for this, like adding an actual UI rather then just text-based UI, adding sounds, recording myself to make it talk to the user, etc. Sadly, I didn't have the time to finish this as I went to make the other project.
+                            </div>
 
+                        </details>
+
+
+
+
+                        <details data-keywords="ap csp project 2, ap csp project two, ap project 2, ap project two, ap 2, ap two">
+                            <summary>
+                                pt project 2
+                                <span class="ach-icon">&gt;</span>
+                            </summary>
+
+                            <div class="achievement-body">
+                                <h3>What:</h3>
+                                For the second project, I made a GUI that shows 3 different numbers and randomizes them every time they show. If the user presses space, it rerolls 1 time. If the user presses the up arrow key, it rerolls 5 times. And if the user won, it showed a you win screen.
+                                <br><br>
+
+
+                                <h3>Language/tools used:</h3>
+                                Python, time and random libaries, coded in thonny
+                                <br><br>
+
+                                <h3>Visual demo:</h3>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/fSfhJ17VCWA?si=joDQCcWr4Vj9K7m-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                <a href="https://youtu.be/fSfhJ17VCWA?si=JCS1lu72yCKty3ex" target="_blank" style="color: #6af7d4;">(Video Link)</a>
+                                <br><br>
+
+
+                                <h3>What I learned:</h3>
+                                <ul>
+                                    <li>How to listen for keyboard input</li>
+                                    <li>How to make a GUI</li>
+                                </ul>
+                                <br><br>
+
+                                <h3>Reflection</h3>
+                                This project was pretty fun to make and I was able to learn how to make a GUI and listen for keyboard input. I did hame some trouble at first with the keyboard inputs, but got it working eventually. Besides that, this project went pretty smoothly, thankfully.                                
                             </div>
 
                         </details>
@@ -761,17 +979,17 @@ THIS IS TO MAKE THE COLLAPSIBLE FOR THE SUBJECT   INFORMATION GOES IN THE achiev
                     </summary>
 
                     <h3>What:</h3>
-
+                    This project was ment to be a final project for the CHS web design class. We had to make a website that would show the past projects we did in the class while having a user friendly UI
                     <br><br>
 
 
                     <h3>Language/tools used:</h3>
 
-                    <br><br>
+                    <br><br> 
 
                     <h3>Visual demo:</h3>
 
-                    <a href="link_goes_here" target="_blank">(Video Link)</a>
+                    <a href="link_goes_here" target="_blank" style="color: #6af7d4;">(Video Link)</a>
                     <br><br>
 
 
@@ -954,44 +1172,61 @@ THIS IS TO MAKE THE COLLAPSIBLE FOR THE SUBJECT   INFORMATION GOES IN THE achiev
 
 
 
-
-
 <!--  JS FOR ANIMATION  -->
 <script>
+var shouldAnimate = true; // should be obvious but this is to check if the animation should play
+
 document.querySelectorAll("details").forEach(d => {
     d.addEventListener("toggle", () => {
         const body = d.querySelectorAll(":scope > .achievement-body, :scope > .collapsible-body, :scope > .about-body");
         //console.log(body);
-        if (!body) return;
+        if (!body) { return }; //checks if there is a body to animate. if not, it returns and doesn't do anything
         
         // Reset animation
         for (const b of body) {
-            //console.log(b);
+            console.log(b);            
             b.classList.remove("animate-open");
             void b.offsetWidth;
 
-            // Animate when opening
-            if (d.open) {
-                b.classList.add("animate-open");
+            if (shouldAnimate){ //only animates if true, if not sets opacity as 1
+                // Animate when opening
+                if (d.open) {
+                    b.classList.add("animate-open");
+                }
+                
+            } else {
+                b.style.opacity = 1;
             }
         }
+        
+        
     });
 });
-</script>
 
 
-<!--  KEYWORD SEARCH SYSTEM  -->
-<script>
+
+//  KEYWORD SEARCH SYSTEM  -->
+
+
+//declare var for both boxes
 const searchBox = document.getElementById("searchBox");
 
 searchBox.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter") return;
+    if (e.key !== "Enter") return;  // Only trigger search on Enter key
+    else search();
+});
+
+
+function search() {
+    
 
     const query = searchBox.value.trim().toLowerCase();
     if (!query) return;
 
     const allDetails = document.querySelectorAll("details");
     let found = false;
+
+    const closeOthers = document.getElementById("closeOthersToggle").checked;
 
     allDetails.forEach(d => {
         const keywords = d.dataset.keywords;
@@ -1001,6 +1236,15 @@ searchBox.addEventListener("keydown", function(e) {
 
         if (list.includes(query)) {
             found = true;
+
+            shouldAnimate = false; //disable animation for this section to prevent lag cuz lag suk 
+
+            // If toggle is ON → close all other collapsibles
+            if (closeOthers) {
+                allDetails.forEach(x => {
+                    if (x !== d) x.open = false;
+                });
+            }
 
             // Open this details
             d.open = true;
@@ -1014,25 +1258,75 @@ searchBox.addEventListener("keydown", function(e) {
                 parent = parent.parentElement;
             }
 
-            // Scroll to the matched collapsible
-            d.scrollIntoView({ behavior: "smooth", block: "center" });
+            // 1. Get the element's position relative to the page
+            const elementPosition = d.getBoundingClientRect().top + window.scrollY;
 
-            // Trigger animation replay on its body
-            const body = d.querySelector(".achievement-body, .collapsible-body");
-            if (body) {
-                body.classList.remove("animate-open");
-                void body.offsetWidth;
-                body.classList.add("animate-open");
-            }
+            // 2. Subtract the header height 
+            const offsetPosition = elementPosition - 90;
+
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+
+            // Scroll to the matched collapsible (old)
+            //d.scrollIntoView({ behavior: "smooth", block: "start" });
+
+            setTimeout(() => { //re-enable animation after a short delay because without delay animation goes back while its scrolling making it lag again, and like i said before, lag suk
+                shouldAnimate = true; //re-enable animation after opening the section
+            }, 100);
+            
         }
     });
 
     if (!found) {
         alert("No matching section found.");
     }
-});
+}
 </script>
 
+
+
+<!-- SETTINGS BUTTON + PANEL -->
+<script>
+    const settingsBtn = document.getElementById("settingsBtn");
+    const settingsPanel = document.getElementById("settingsPanel");
+
+    settingsBtn.addEventListener("click", () => {
+        settingsPanel.style.display =
+            settingsPanel.style.display === "block" ? "none" : "block";
+    });
+
+    // Close panel if clicking outside
+    document.addEventListener("click", (e) => {
+        if (!settingsContainer.contains(e.target)) {
+            settingsPanel.style.display = "none";
+        }
+    });
+</script>
+
+
+<!-- OPEN/CLOSE ALL BUTTONS -->
+<script>
+// OPEN ALL
+document.getElementById("openAllBtn").addEventListener("click", () => {
+    const allDetails = document.querySelectorAll("details");
+
+    allDetails.forEach(d => {
+        d.open = true;
+    });
+});
+
+// CLOSE ALL
+document.getElementById("closeAllBtn").addEventListener("click", () => {
+    const allDetails = document.querySelectorAll("details");
+
+    allDetails.forEach(d => {
+        d.open = false;
+    });
+});
+</script>
 
 
 
