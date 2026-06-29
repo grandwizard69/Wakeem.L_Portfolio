@@ -536,6 +536,8 @@ details[open] > summary .ach-icon {
         → I want to understand how things work, build cool stuff, and share what I learn along the way.<br><br>
         <span>$</span> hidden_code<br>
         → The code for my projects will be hidden. You may contact me if you wish to see it.<br><br>
+        <span  style="color:#ffdd7a;">$ secret</span><br>
+        → Like all of my projects, there is a secret somewhere in this website. Try to see if you can find it! (Hint: it has something to do with the search bar)<br><br>
     </div>
 </header>
 
@@ -627,6 +629,8 @@ details[open] > summary .ach-icon {
                 More recently, I have been getting into coding a lot. I got good at it almost immediately and went on to achieve a lot within a short time. My first achievement was getting my Pitt project for CHS programming into one line using list comprehension. This is an intermediate-level technique often taught in college, and I did it without any source material. I figured it out just by experimenting. Then, I managed to basically master it. Lastly, I implemented it into my code. And all in less than half an hour.<br><br>
 
                 A more recent achievement of mine would be the making of a Jarvis-like utility based AI. Though not complete, it still has some useful functionality. Like being able to turn off and on my lights and set reminders. Along with this, I also have been working on a conversation AI, named Sage, that I hope to make more advanced and implement more utility into in the near future.<br><br>
+
+                Something else about me is that I tend to use hi a lot in my code. Whether it be to test something, have as a random variable, or use as an easter egg, I use it a lot. 
             </div>
         </details>
 
@@ -1196,17 +1200,6 @@ THIS IS TO MAKE THE COLLAPSIBLE FOR THE SUBJECT   INFORMATION GOES IN THE achiev
             </div>
         </details>
 
-        <details>
-            <summary>
-                hi
-                <span class="ach-icon">&gt;</span>
-            </summary>
-
-            <div class="achievement-body">
-                hhhhhhhi
-            </div>
-        </details>
-
     </div>
 </details>
 
@@ -1329,17 +1322,6 @@ THIS IS TO MAKE THE COLLAPSIBLE FOR THE SUBJECT   INFORMATION GOES IN THE achiev
 
         
 
-        <details>
-            <summary>
-                [Experiment / Prototype]
-                <span class="ach-icon">&gt;</span>
-            </summary>
-
-            <div class="achievement-body">
-                smt else
-            </div>
-        </details>
-
     </div>
 </details>
 
@@ -1426,6 +1408,25 @@ function search() {
 
     const query = searchBox.value.trim().toLowerCase();
     if (!query) return;
+
+    // Easter egg: if user searches "hi", replace all text with "hello!"
+    if (query === "hi") {
+        function replaceAllText(node) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                if (node.textContent.trim()) {
+                    node.textContent = "hello!";
+                }
+            } else {
+                for (let child of node.childNodes) {
+                    replaceAllText(child);
+                }
+            }
+        }
+        replaceAllText(document.body);
+        searchBox.blur();
+        suggestionBox.classList.add('hidden');
+        return;
+    }
 
     const allDetails = document.querySelectorAll("details");
     let found = false;
